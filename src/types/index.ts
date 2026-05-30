@@ -19,19 +19,31 @@
  * Button variant types
  * Gunakan ini untuk Button component
  */
-export type ButtonVariant = 'primary' | 'secondary' | 'outline';
+export type TButtonVariant = 'primary' | 'secondary' | 'outline';
 
 /**
  * Example: Button Props
  * Uncomment dan sesuaikan dengan kebutuhan
  */
-// export interface ButtonProps {
-//   variant?: ButtonVariant;
-//   children: React.ReactNode;
-//   onClick?: () => void;
-//   className?: string;
-//   disabled?: boolean;
-// }
+export interface IButtonProps {
+  children: React.ReactNode;
+  variant?: TButtonVariant;
+  className?: string;
+  onClick?: () => void;
+}
+
+// ==========================================
+// Navigation Types
+// ==========================================
+
+/**
+ * Navigation menu item
+ */
+export interface INavItem {
+  label: string;
+  href: string;
+  external?: boolean;
+}
 
 // ==========================================
 // Section Data Types
@@ -50,55 +62,60 @@ export type ButtonVariant = 'primary' | 'secondary' | 'outline';
 /**
  * Example: Service/Product Item
  */
-// export interface ServiceItem {
-//   id: number;
-//   title: string;
-//   description: string;
-//   icon?: string;
-//   image?: string;
-// }
+export interface IServiceItem {
+  id: number;
+  title: string;
+  description: string;
+  icon?: string;
+  // image?: string;
+}
 
-/**
- * Example: Team Member
- */
-// export interface TeamMember {
-//   id: number;
-//   name: string;
-//   position: string;
-//   bio?: string;
-//   image: string;
-//   socialLinks?: {
-//     linkedin?: string;
-//     twitter?: string;
-//     github?: string;
-//   };
-// }
+export interface IProcessItem {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export interface IIndustryItem {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
+export interface IPortfolioItem {
+  id: number;
+  category: string;
+  title: string;
+  image: string;
+}
+
+export interface ICompanyInfo {
+  icon: string;
+  logo: string;
+  email: string;
+  phone: string;
+  address: string;
+}
 
 /**
  * Example: Testimonial
  */
-// export interface Testimonial {
-//   id: number;
-//   name: string;
-//   position: string;
-//   company: string;
-//   message: string;
-//   avatar?: string;
-//   rating?: number;
-// }
+export interface ITestimonial {
+  id: number;
+  name: string;
+  role: string;
+  company: string;
+  message: string;
+  avatar: string;
+}
 
-// ==========================================
-// Navigation Types
-// ==========================================
+export interface ITestimonialCardProps extends ITestimonial {
+  active?: boolean;
+}
 
-/**
- * Navigation menu item
- */
-// export interface NavItem {
-//   label: string;
-//   href: string;
-//   external?: boolean;
-// }
+export { testimonials } from '../data/testimonials';
+export { default as TestimonialCard } from '../components/ui/TestimonialCard';
 
 // ==========================================
 // Form Types (if needed)
@@ -107,11 +124,26 @@ export type ButtonVariant = 'primary' | 'secondary' | 'outline';
 /**
  * Contact form data
  */
-// export interface ContactFormData {
-//   name: string;
-//   email: string;
-//   message: string;
-// }
+export interface IContactFormData {
+  name: string;
+  email: string;
+  message: string;
+  services: string[];
+}
+export interface IContactModalProps {
+  isOpen: boolean;
+  type: 'success' | 'error';
+  onClose: () => void;
+  onRetry?: () => void;
+}
+
+export interface IServiceCheckboxProps {
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+}
+
+export type TAlertStatus = 'success' | 'failed' | null;
 
 // ==========================================
 // TODO: Add more types as needed!
